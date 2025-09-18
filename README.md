@@ -14,7 +14,7 @@
 ### 1) PMI — Production Management Interface
 
 <p align="center">
-  <img src="./assets/pmi.png" width="650" />
+<img width="677" height="424" alt="image" src="https://github.com/user-attachments/assets/ea4005cb-119b-4eea-9cc2-3eb7f025dade" />
 </p>
 <p align="center">〈Fig. PMI: Work orders, process planning, scheduling, WIP & KPI dashboards〉</p>
 
@@ -33,7 +33,7 @@ PMI handles **production planning and scheduling**, including workpiece design, 
 ### 2) CJP — Control & Job Processing
 
 <p align="center">
-  <img src="./assets/cjp.png" width="650" />
+<img width="677" height="423" alt="image" src="https://github.com/user-attachments/assets/249fbcbc-f6c3-4b0d-9065-dc41d834d312" />
 </p>
 <p align="center">〈Fig. CJP: Machine control, job parameters, synchronization & alarms〉</p>
 
@@ -52,7 +52,7 @@ CJP is the **shop-floor control layer**, transforming PMI schedules into machine
 ### 3) Employee Management
 
 <p align="center">
-  <img src="./assets/employee.png" width="450" />
+<img width="473" height="265" alt="image" src="https://github.com/user-attachments/assets/3a31ab7b-0d76-406c-8511-459bc2d66a98" />
 </p>
 <p align="center">〈Fig. Employee Management: Accounts, shifts, roles, audit trail〉</p>
 
