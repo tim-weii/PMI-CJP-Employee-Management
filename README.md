@@ -1,5 +1,12 @@
 ##  PMI / CJP / Employee Management
 
+[![VB.NET](https://img.shields.io/badge/VB.NET-Visual%20Basic-blueviolet?logo=dotnet)](https://learn.microsoft.com/en-us/dotnet/visual-basic/) 
+[![VBA](https://img.shields.io/badge/VBA-Microsoft-green?logo=microsoft)](https://learn.microsoft.com/en-us/office/vba/api/overview/) 
+[![PHP](https://img.shields.io/badge/PHP-8.0-blue?logo=php)](https://www.php.net/) 
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql)](https://www.mysql.com/) 
+[![RS485](https://img.shields.io/badge/RS485%20+%20Modbus-Communication-orange)](https://modbus.org/) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > The following screenshots illustrate the system’s **Human-Machine Interfaces (HMI)** and backend management tools:  
 > **PMI (Production Management Interface)**, **CJP (Control & Job Processing)**, and the **Employee Management System**.  
 
