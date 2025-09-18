@@ -2,85 +2,70 @@
 
 > The following screenshots illustrate the system’s **Human-Machine Interfaces (HMI)** and backend management tools:  
 > **PMI (Production Management Interface)**, **CJP (Control & Job Processing)**, and the **Employee Management System**.  
-> Together, they form a closed-loop flow of **Management → Control → Personnel**, supported by RS485 + Modbus communication, real-time scheduling, and database integration.
+
+---
+
+- **PMI (Production Management Interface)** → Process planning & scheduling  
+- **CJP (Control & Job Processing)** → Machine-level control & job dispatch  
+- **Employee Management** → Personnel, shifts, and access control  
 
 ---
 
 ### 1) PMI — Production Management Interface
 
 <p align="center">
-<img width="677" height="424" alt="image" src="https://github.com/user-attachments/assets/13423e88-d049-48c1-96e4-b2a342da398d" />
+  <img src="./assets/pmi.png" width="650" />
 </p>
-<p align="center">〈Fig: PMI interface (orders, scheduling, WIP tracking, KPI dashboard)〉</p>
+<p align="center">〈Fig. PMI: Work orders, process planning, scheduling, WIP & KPI dashboards〉</p>
 
-**Focus**: Planning and management layer. Provides order/work order tracking, production scheduling, WIP (Work-In-Progress), and KPI dashboards.  
+**Focus**:  
+PMI handles **production planning and scheduling**, including workpiece design, drilling path planning, and progress monitoring.  
 
 **Key Features**
-- **Scheduling**: Generate plans based on order priority, due dates, and process times. Supports manual fine-tuning and scenario simulation.  
-- **WIP Tracking**: Station entry/exit, takt times, yield, and bottleneck analysis.  
+- **Workpiece & Process Planning**: Import drawings, plan hole positions, dimensions, and machining sequences.  
+- **Scheduling**: Generate plans based on order priority, deadlines, and process times; supports manual tuning and simulation.  
+- **WIP Tracking**: Station entry/exit, takt times, bottleneck detection, and progress visualization.  
 - **KPI Dashboard**: OEE, throughput, yield, and downtime analysis.  
-- **Data Integration**: Syncs with CJP for equipment data and with quality/inspection records.  
-
-**Integration**
-- Sends work orders and schedules to **CJP**; receives machine status, output, and alarms.  
-- Syncs with **Employee Management** for workforce assignments and responsibility tracking.  
+- **Data Integration**: Syncs with CJP for machine data and with quality/inspection records.  
 
 ---
 
 ### 2) CJP — Control & Job Processing
 
 <p align="center">
-<img width="677" height="423" alt="image" src="https://github.com/user-attachments/assets/0c412521-62ed-4270-afb0-69388be67fb1" />
+  <img src="./assets/cjp.png" width="650" />
 </p>
-<p align="center">〈Fig: CJP interface (machine status, job dispatch, alarm monitoring)〉</p>
+<p align="center">〈Fig. CJP: Machine control, job parameters, synchronization & alarms〉</p>
 
-**Focus**: Shop-floor control layer. Directly connects to machines for job dispatching, recipe download, monitoring, and alarm handling.  
+**Focus**:  
+CJP is the **shop-floor control layer**, transforming PMI schedules into machine instructions and returning real-time feedback.  
 
 **Key Features**
-- **Communication**: RS485 (half-duplex differential) + **Modbus protocol**, enabling long-distance multi-machine synchronization.  
-- **Job Dispatch**: Implements **Round-Robin / Priority Scheduling** for fair and efficient task allocation.  
-- **Parameter Monitoring**: Real-time collection of temperature, pressure, speed, etc. Triggers threshold-based alarms.  
-- **Alarm Handling**: Downtime/recovery workflows, alarm classification, and feedback to work orders (pause/rework/scrap).  
-
-**Integration**
-- Receives schedules and orders from **PMI**, returns real-time production results.  
-- Authenticates user access via **Employee Management** (role-based HMI access).  
+- **Parameter Setup**: Define length, quantity, and machining depth for each job.  
+- **Real-Time Monitoring**: Collect machine parameters (speed, pressure, temperature), trigger threshold-based alarms.  
+- **Job Dispatching**: Uses **Round-Robin / Priority Scheduling** for balanced and efficient job allocation.  
+- **Multi-Machine Sync**: RS485 (half-duplex differential) + **Modbus protocol**, enabling long-distance synchronization.  
+- **Alarm Handling**: Downtime management, recovery workflows, and feedback to PMI.  
 
 ---
 
-### 3) Employee Management System
+### 3) Employee Management
 
 <p align="center">
-<img width="473" height="265" alt="image" src="https://github.com/user-attachments/assets/63e1ab83-894e-41b4-8ad8-a7b1ced017d3" />
+  <img src="./assets/employee.png" width="450" />
 </p>
-<p align="center">〈Fig: Employee Management interface (users, shifts, roles, audit trail)〉</p>
+<p align="center">〈Fig. Employee Management: Accounts, shifts, roles, audit trail〉</p>
 
-**Focus**: Personnel and access control. Provides accounts, shift scheduling, skill certification, and audit logging.  
+**Focus**:  
+This module manages **workforce, scheduling, and access control**, ensuring secure operations and optimized labor allocation.  
 
 **Key Features**
-- **RBAC (Role-Based Access Control)**: Operator / Engineer / Admin tiers; permissions down to machine or station level.  
-- **Shift Management**: Scheduling, overtime, and substitutions; feeds into **PMI** for workforce planning.  
-- **Skills & Training**: Certification tracking, renewal reminders, qualification management.  
-- **Audit Trail**: Logs login, command execution, and parameter changes for traceability and compliance.  
-
-**Integration**
-- Provides login/authorization for **CJP HMI**; restricts commands by user role.  
-- Feeds workforce and skill availability to **PMI** for accurate scheduling.  
-
----
-
-## 🔗 System Data Flow (Overview)
-
-1. **CJP** exchanges machine data (status, parameters, alarms) via RS485 + Modbus and dispatches jobs using **Round-Robin / Priority Scheduling**.  
-2. **PMI** sends work orders and schedules, collects CJP feedback (output, downtime), and updates **WIP/KPI dashboards**.  
-3. **Employee Management** controls login, permissions, and skill/shift data, constraining both CJP operations and PMI scheduling.  
-
-Together they form a closed loop:  
-**Planning (PMI) → Control (CJP) → Feedback (Results & Personnel) → Re-planning (PMI)**, ensuring production stability and traceability.
+- **RBAC (Role-Based Access Control)**: Operators / Engineers / Admin roles; permissions down to station level.  
+- **Shift Management**: Planning, overtime, substitution; feeds into PMI for accurate scheduling.  
+- **Skills & Certification**: Track qualifications and reminders for renewal.  
+- **Audit Trail**: Logs of login, command execution, and parameter changes for compliance.  
+- **Integration**:  
+  - With **PMI** → Provides workforce/skills data for scheduling.  
+  - With **CJP** → Restricts HMI operations by role/permission.  
 
 ---
-
-## ✅ Suggested Captions (for quick reference under each figure)
-- `PMI: Production Management interface for orders, scheduling, WIP, and KPI dashboards.`  
-- `CJP: Production Control interface for real-time job dispatch and monitoring (RS485 + Modbus).`  
-- `Employee Management: User, shift, and permission system with full audit trail.`
